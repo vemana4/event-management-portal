@@ -1,8 +1,8 @@
-# 🏛️ College Event Portal Monorepo
+# Event Management Portal
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org) [![pnpm](https://img.shields.io/badge/Manager-pnpm-orange)](https://pnpm.io) [![Vercel Deploy](https://img.shields.io/badge/Deploy-Vercel--Ready-black)](https://vercel.com)
 
-A full-stack, pixel-perfect management system for campus events. Features OAuth2 authentication, real-time RSVP dashboard analytics, category filters, and leaderboards, fully configured for Vercel and Render deployments.
+Full-stack event management portal with OAuth2 authentication, RSVP tracking, and real-time analytics dashboards.
 
 ## 🚀 Key Technologies
 - **Backend Server**: Node.js, Express, TS, PostgreSQL (Drizzle ORM), Pino Logging
