@@ -2,6 +2,7 @@ import { Router } from "express";
 import { db } from "@workspace/db";
 import { events, eventCategories, venues, registrations } from "@workspace/db/schema";
 import { eq, ilike, sql, and } from "drizzle-orm";
+import { logger } from "../lib/logger";
 
 const router = Router();
 
@@ -40,7 +41,7 @@ router.get("/", async (req, res) => {
     const results = await query;
     res.json(results);
   } catch (error) {
-    console.error(error);
+    logger.error({ err: error }, "Failed to list events");
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
@@ -61,7 +62,7 @@ router.get("/pending", async (req, res) => {
 
     res.json(pendingEvents);
   } catch (error) {
-    console.error(error);
+    logger.error({ err: error }, "Failed to get pending events");
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
@@ -93,7 +94,7 @@ router.post("/", async (req, res) => {
     res.status(201).json(newEvent);
     return;
   } catch (error) {
-    console.error(error);
+    logger.error({ err: error }, "Failed to propose event");
     res.status(500).json({ error: "Internal Server Error" });
     return;
   }
@@ -109,7 +110,7 @@ router.patch("/:id/status", async (req, res) => {
       .returning();
     res.json(updated);
   } catch (error) {
-    console.error(error);
+    logger.error({ err: error }, "Failed to update event status");
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
